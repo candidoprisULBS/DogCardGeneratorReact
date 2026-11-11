@@ -44,9 +44,9 @@ The application uses the [Dog CEO API](https://dog.ceo/dog-api/) to retrieve ran
 
 ## Technologies Used
 
-- **HTML5** - Semantic page structure, forms, labels, and accessible status regions.
+- **React** - Component-based UI, state management, form handling, and card actions.
+- **Vite** - Local development server and production bundling.
 - **CSS3** - Responsive styling using Flexbox, CSS Grid, custom properties, and media queries.
-- **JavaScript ES6+** - Form handling, asynchronous API requests, DOM rendering, validation, and card actions.
 - **LocalStorage API** - Persistent browser-side history for generated cards.
 - **Fetch API** - Communication with the Dog CEO image service.
 - **FileReader API** - Conversion of downloaded image blobs to Base64 Data URLs.
@@ -54,42 +54,48 @@ The application uses the [Dog CEO API](https://dog.ceo/dog-api/) to retrieve ran
 
 ## Installation and Local Development
 
-This is a static frontend project and does not require a backend server, package manager, or build step.
+This is a frontend React project powered by Vite. It does not require a backend server.
 
 ### Option 1: VS Code Live Server
 
-1. Clone the repository:
+1. Clone the repository and install dependencies:
 
    ```bash
    git clone https://github.com/candidoprisULBS/DogCardGenerator.git
    cd DogCardGenerator
+   npm install
    ```
 
 2. Open the project folder in Visual Studio Code.
-3. Install the **Live Server** extension if it is not already installed.
-4. Open `index.html`.
-5. Right-click the file and select **Open with Live Server**.
-6. Use the generated local URL, commonly `http://127.0.0.1:5500`.
+3. Start the Vite development server:
 
-### Option 2: Open the HTML file directly
+```bash
+npm run dev
+```
 
-Open `index.html` in a modern browser. A local server is recommended because browser security and CORS behavior can vary when files are opened with the `file://` protocol.
+4. Open the local URL shown in the terminal.
+
+### Production build
+
+Create a production bundle with `npm run build`, then preview it with `npm run preview`.
 
 ## Project Structure
 
 ```text
 DogCardGenerator/
-├── index.html   # Application markup, form, preview, and history containers
-├── style.css    # Responsive layout, visual styling, and component states
-├── script.js    # API calls, Base64 conversion, persistence, and interactions
-└── README.md    # Project documentation
+├── index.html       # HTML shell and React mount point
+├── src/main.jsx     # React app, API calls, persistence, and card components
+├── style.css        # Responsive layout, visual styling, and component states
+├── package.json     # React/Vite scripts and dependencies
+├── vite.config.js   # Vite React plugin configuration
+└── README.md        # Project documentation
 ```
 
 ### Main files
 
-- **`index.html`** defines the generator form, current-card preview, saved-history area, and page layout.
+- **`index.html`** provides the document shell and React mount point.
+- **`src/main.jsx`** defines the generator form, current-card preview, saved-history area, API calls, LocalStorage persistence, and card actions.
 - **`style.css`** provides the responsive Flexbox/Grid layout, visual design, form states, card styles, and mobile/desktop breakpoints.
-- **`script.js`** validates input, calls the API, converts images to Data URLs, renders cards, manages LocalStorage, and handles deletion and history clearing.
 
 ## API Usage and Handling
 
